@@ -1,1 +1,10 @@
 ss
+
+2018-04-23 20:10:09.571 [http-nio-8081-exec-3] ERROR [Message.java:266] com.gtcom.gtcomdispatch.bo.Message -
+### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+### The error may involve com.gtcom.gtcomdispatch.quartz.dao.SchedulerJobDao.updateTask-Inline
+### The error occurred while setting parameters
+### SQL: UPDATE DISP_TASK task SET   task.Identification=?,task.Search_Time =SYSDATE()   WHERE task.DISP_TASK_ID =   ?
+### Cause: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+; SQL []; Deadlock found when trying to get lock; try restarting transaction; nested exception is com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+
