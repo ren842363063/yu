@@ -1,103 +1,17 @@
-
-# Server
-redis_version:3.2.8
-redis_git_sha1:00000000
-redis_git_dirty:0
-redis_build_id:144b77f0e86a7103
-redis_mode:standalone
-os:Linux 3.10.0-693.2.2.el7.x86_64 x86_64
-arch_bits:64
-multiplexing_api:epoll
-gcc_version:4.8.5
-process_id:15583
-run_id:e80b59df6bf8f5724a93dd147198621fe3efa076
-tcp_port:6379
-uptime_in_seconds:2765584
-uptime_in_days:32
-hz:10
-lru_clock:14612264
-executable:/home/zyyt/gtcom/redis/bin/redis-server
-config_file:/home/zyyt/gtcom/redis/etc/redis_6379.conf
-
-# Clients
-connected_clients:2
-client_longest_output_list:0
-client_biggest_input_buf:0
-blocked_clients:0
-
-# Memory
-used_memory:1453232
-used_memory_human:1.39M
-used_memory_rss:10108928
-used_memory_rss_human:9.64M
-used_memory_peak:6442616
-used_memory_peak_human:6.14M
-total_system_memory:33567989760
-total_system_memory_human:31.26G
-used_memory_lua:37888
-used_memory_lua_human:37.00K
-maxmemory:4294967296
-maxmemory_human:4.00G
-maxmemory_policy:volatile-lru
-mem_fragmentation_ratio:6.96
-mem_allocator:jemalloc-4.0.3
-
-# Persistence
-loading:0
-rdb_changes_since_last_save:0
-rdb_bgsave_in_progress:0
-rdb_last_save_time:1524561642
-rdb_last_bgsave_status:ok
-rdb_last_bgsave_time_sec:0
-rdb_current_bgsave_time_sec:-1
-aof_enabled:0
-aof_rewrite_in_progress:0
-aof_rewrite_scheduled:0
-aof_last_rewrite_time_sec:-1
-aof_current_rewrite_time_sec:-1
-aof_last_bgrewrite_status:ok
-aof_last_write_status:ok
-
-# Stats
-total_connections_received:1345
-total_commands_processed:9315320
-instantaneous_ops_per_sec:0
-total_net_input_bytes:511061164
-total_net_output_bytes:7801442705
-instantaneous_input_kbps:0.03
-instantaneous_output_kbps:0.00
-rejected_connections:0
-sync_full:2
-sync_partial_ok:0
-sync_partial_err:0
-expired_keys:2217476
-evicted_keys:0
-keyspace_hits:61019
-keyspace_misses:1778729
-pubsub_channels:0
-pubsub_patterns:0
-latest_fork_usec:386
-migrate_cached_sockets:0
-
-# Replication
-role:master
-connected_slaves:1
-slave0:ip=172.17.0.150,port=6379,state=online,offset=417920424,lag=1
-master_repl_offset:417920424
-repl_backlog_active:1
-repl_backlog_size:1048576
-repl_backlog_first_byte_offset:416871849
-repl_backlog_histlen:1048576
-
-# CPU
-used_cpu_sys:969.07
-used_cpu_user:776.44
-used_cpu_sys_children:13.07
-used_cpu_user_children:3.20
-
-# Cluster
-cluster_enabled:0
-
-# Keyspace
-
-
+<appender name="actionAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<file>${LOG_PATH}/action/action.log</file>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<fileNamePattern>${LOG_PATH}/action/action-%d{yyyy-MM-dd}.log.%i</fileNamePattern>
+		<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+		<!-- 每个日志文件大小 -->
+		<maxFileSize>200MB</maxFileSize>
+		</timeBasedFileNamingAndTriggeringPolicy>
+		<!-- 日志文件最大占据空间量，超过该值会异步删除日志文件 -->
+		<totalSizeCap>6GB</totalSizeCap>
+		<!-- 最多保存最近7天的日志 -->
+		<maxHistory>7</maxHistory>
+	</rollingPolicy>
+	<layout class="ch.qos.logback.classic.PatternLayout">
+		<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n</Pattern>
+	</layout>
+</appender>
