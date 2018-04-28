@@ -1,17 +1,18 @@
 <appender name="actionAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-	<file>${LOG_PATH}/action/action.log</file>
+	<file></file>
 	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-		<fileNamePattern>${LOG_PATH}/action/action-%d{yyyy-MM-dd}.log.%i</fileNamePattern>
+		<!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
+		<FileNamePattern>${logback.logdir}/info.${logback.appname}.%d{yyyy-MM-dd}.log</FileNamePattern>
 		<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 			<!-- 每个日志文件大小 -->
 			<maxFileSize>200MB</maxFileSize>
 		</timeBasedFileNamingAndTriggeringPolicy>
 		<!-- 日志文件最大占据空间量，超过该值会异步删除日志文件 -->
-		<totalSizeCap>6GB</totalSizeCap>
+		<totalSizeCap>1GB</totalSizeCap>
 		<!-- 最多保存最近7天的日志 -->
 		<maxHistory>7</maxHistory>
 	</rollingPolicy>
 	<layout class="ch.qos.logback.classic.PatternLayout">
 		<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n</Pattern>
 	</layout>
-</appender>
+</appender>  
